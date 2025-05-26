@@ -3,12 +3,12 @@
 import { useState, useEffect } from "react"
 import { ProductGrid } from "@/components/product-grid"
 import { CartSidebar } from "@/components/cart-sidebar"
-// import { Alert, AlertDescription } from "@/components/ui/alert"
+import { Alert, AlertDescription } from "@/components/ui/alert"
 import { products } from "@/lib/products"
 import { CartProvider, useCart } from "@/contexts/cart-context"
 
 function HomePageContent() {
-  const { success, isLoaded } = useCart()
+  const { success} = useCart()
   const [showToast, setShowToast] = useState(false)
 
   useEffect(() => {
@@ -24,9 +24,9 @@ function HomePageContent() {
       {/* Toast Notification */}
       {showToast && success && (
         <div className="fixed top-4 right-4 z-50 animate-in slide-in-from-top-2">
-          {/* <Alert className="border-green-200 bg-green-50">
+          <Alert className="border-green-200 bg-green-50">
             <AlertDescription className="text-green-800">{success}</AlertDescription>
-          </Alert> */}
+          </Alert>
         </div>
       )}
 
