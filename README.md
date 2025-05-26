@@ -88,9 +88,7 @@ A fully functional shopping cart built with Next.js, TypeScript, and React. Feat
 │   ├── products.ts         # Product data
 │   └── coupons.ts          # Coupon validation
 ├── types/
-│   └── index.ts            # TypeScript interfaces
-└── __tests__/
-    └── cart.test.ts        # Unit tests
+│   └── index.ts            # 
 \`\`\`
 
 ### Key Components
