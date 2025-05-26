@@ -1,36 +1,218 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Shopping Cart Application
 
-## Getting Started
+A fully functional shopping cart built with Next.js, TypeScript, and React. Features include product browsing, cart management, coupon discounts, persistence, and comprehensive input validation.
 
-First, run the development server:
+## 🚀 Features
 
-```bash
-npm run dev
+### Core Functionality
+- **Product Display**: Browse 12+ products with images, prices, and descriptions
+- **Cart Management**: Add, remove, and update item quantities
+- **Real-time Updates**: Cart totals update automatically
+- **Coupon System**: Apply discount codes (use \`WEB3BRIDGECOHORTx\` for 10% off)
+- **Persistence**: Cart data survives page refreshes using localStorage
+- **Input Validation**: Regex validation for coupons, quantity restrictions
+- **Error Handling**: User-friendly error messages and edge case handling
+
+### Technical Features
+- **TypeScript**: Full type safety throughout the application
+- **Responsive Design**: Works on desktop and mobile devices
+- **Component Architecture**: Modular, reusable React components
+- **Custom Hooks**: \`useCart\` hook for cart state management
+- **Unit Tests**: Comprehensive test coverage
+- **Modern UI**: Built with shadcn/ui components
+
+## 🛠️ Installation & Setup
+
+### Prerequisites
+- Node.js 18+ 
+- npm or yarn
+
+### Getting Started
+
+1. **Clone the repository**
+   \`\`\`bash
+   git clone <repository-url>
+   cd shopping-cart-app
+   \`\`\`
+
+2. **Install dependencies**
+   \`\`\`bash
+   npm install
+   # or
+   yarn install
+   \`\`\`
+
+3. **Run the development server**
+   \`\`\`bash
+   npm run dev
+   # or
+   yarn dev
+   \`\`\`
+
+4. **Open your browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
+
+## 📖 Usage Guide
+
+### Shopping Experience
+1. **Browse Products**: View the product grid on the homepage
+2. **Add to Cart**: Click "Add to Cart" on any product
+3. **View Cart**: Click the cart button in the header to open the sidebar
+4. **Manage Items**: 
+   - Adjust quantities with +/- buttons
+   - Remove items with the trash icon
+5. **Apply Coupons**: 
+   - Enter \`WEB3BRIDGECOHORTx\` for 10% discount
+   - Case-sensitive validation
+6. **Checkout**: Review totals and proceed to checkout
+
+### Coupon Codes
+- **WEB3BRIDGECOHORTx**: 10% discount on entire order
+- Codes must be alphanumeric (no special characters)
+- Case-sensitive validation
+
+## 🏗️ Architecture
+
+### Project Structure
+\`\`\`
+├── app/
+│   ├── layout.tsx          # Root layout
+│   └── page.tsx            # Homepage
+├── components/
+│   ├── cart-sidebar.tsx    # Cart management UI
+│   ├── product-grid.tsx    # Product display
+│   └── ui/                 # shadcn/ui components
+├── hooks/
+│   └── use-cart.ts         # Cart state management
+├── lib/
+│   ├── products.ts         # Product data
+│   └── coupons.ts          # Coupon validation
+├── types/
+│   └── index.ts            # TypeScript interfaces
+└── __tests__/
+    └── cart.test.ts        # Unit tests
+\`\`\`
+
+### Key Components
+
+#### \`useCart\` Hook
+Manages all cart state and operations:
+- Add/remove items
+- Update quantities
+- Apply/remove coupons
+- Calculate totals
+- Handle persistence
+- Error management
+
+#### \`ProductGrid\`
+Displays products in a responsive grid layout with:
+- Product images and details
+- Category badges
+- Add to cart functionality
+
+#### \`CartSidebar\`
+Slide-out cart interface featuring:
+- Item management
+- Quantity controls
+- Coupon application
+- Order summary
+- Checkout button
+
+## 🧪 Testing
+
+### Running Tests
+\`\`\`bash
+npm test
 # or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+yarn test
+\`\`\`
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Test Coverage
+- ✅ Coupon validation (valid/invalid codes)
+- ✅ Cart calculations (subtotal, discount, total)
+- ✅ Product data validation
+- ✅ Input validation (quantities, coupon patterns)
+- ✅ Edge cases (empty cart, zero quantities)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🔧 Development Workflow
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Git Workflow
+This project follows a feature-branch workflow:
 
-## Learn More
+1. **Create feature branch**
+   \`\`\`bash
+   git checkout -b feature/cart-functionality
+   \`\`\`
 
-To learn more about Next.js, take a look at the following resources:
+2. **Implement features with commits**
+   \`\`\`bash
+   git add .
+   git commit -m "feat: add product grid component"
+   git commit -m "feat: implement cart state management"
+   git commit -m "feat: add coupon validation"
+   \`\`\`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. **Merge to main**
+   \`\`\`bash
+   git checkout main
+   git merge feature/cart-functionality
+   \`\`\`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Commit Convention
+- \`feat:\` New features
+- \`fix:\` Bug fixes
+- \`test:\` Adding tests
+- \`docs:\` Documentation updates
+- \`refactor:\` Code refactoring
 
-## Deploy on Vercel
+## 🎯 Implementation Details
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Persistence Strategy
+- Uses \`localStorage\` for cart persistence
+- Automatic save/load on cart changes
+- Graceful error handling for storage issues
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Validation Rules
+- **Quantities**: Must be non-negative integers
+- **Coupons**: Alphanumeric only, case-sensitive
+- **Error Messages**: Clear, actionable feedback
+
+### Performance Optimizations
+- Efficient re-renders with proper React patterns
+- Memoized calculations
+- Optimistic UI updates
+
+## 🚀 Future Enhancements
+
+- [ ] User authentication
+- [ ] Product search and filtering
+- [ ] Wishlist functionality
+- [ ] Order history
+- [ ] Payment integration
+- [ ] Inventory management
+- [ ] Product reviews and ratings
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests for new functionality
+5. Ensure all tests pass
+6. Submit a pull request
+
+## 📝 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 🆘 Support
+
+If you encounter any issues or have questions:
+1. Check the existing issues on GitHub
+2. Create a new issue with detailed description
+3. Include steps to reproduce any bugs
+
+---
+
+**Happy Shopping! 🛒**
+\`\`\`
